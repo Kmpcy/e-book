@@ -1,17 +1,23 @@
+import 'package:booksy/Features/Splash/Presentation/Views/Widgets/splash_view.dart';
+import 'package:booksy/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( const ebook());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class ebook extends StatelessWidget {
+  const ebook({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-     
-      home: const MyHomePage(),
+    return GetMaterialApp(
+     debugShowCheckedModeBanner: false,
+     theme: ThemeData.dark().copyWith(
+      scaffoldBackgroundColor:Booksy.kPrimaryColor,
+     ),
+      home: const SplashView(),
     );
   }
 }
