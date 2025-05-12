@@ -1,7 +1,9 @@
+import 'package:booksy/Core/App_Router.dart';
 import 'package:booksy/Features/Splash/Presentation/Views/Widgets/splash_view.dart';
 import 'package:booksy/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -13,13 +15,14 @@ class ebook extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp.router(
+      routerConfig: AppRouter.router,
      debugShowCheckedModeBanner: false,
      theme: ThemeData.dark().copyWith(
       scaffoldBackgroundColor:Booksy.kPrimaryColor,
       textTheme:GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme
-     )),
-      home: const SplashView(),
+     )), 
+     
       );
   }
 }

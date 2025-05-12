@@ -1,7 +1,9 @@
+import 'package:booksy/Core/App_Router.dart';
 import 'package:booksy/Features/Home/presentation/views/home_view.dart';
 import 'package:booksy/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -15,7 +17,8 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
-      Get.to(() => const HomeView(), transition: Transition.cupertino);
+      context.go(AppRouter.homeView);
+
     });
   }
 
