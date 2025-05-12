@@ -5,8 +5,13 @@ abstract class Booksy {
   static Color kPrimaryColor = const Color(0xFF100B20);
   static const String logo = "assets/BOOKLY.png";
   static const String test = "assets/test_image.png";
-  static const mediumText = TextStyle(
-    fontSize: 20,
-    fontWeight: FontWeight.w600,
-  );
+  static  const text20 = TextStyle(fontSize: 18,fontWeight: FontWeight.w700);
+  static const text14 = TextStyle(fontSize: 14,fontWeight: FontWeight.w500);
+  static const text18 = TextStyle(fontSize: 18,fontWeight: FontWeight.w700);
+  static const text16 = TextStyle(fontSize: 16);
+    static const text30 = TextStyle(fontSize: 30,fontWeight: FontWeight.normal );
+
+
+
+
 }
