@@ -1,10 +1,12 @@
+import 'package:booksy/Core/App_Router.dart';
 import 'package:booksy/Features/Home/presentation/views/widgets/book_rate.dart';
 import 'package:booksy/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class BestSellerItem extends StatelessWidget {
-  const BestSellerItem({super.key});
-
+  const BestSellerItem({super.key,required this.index});
+final int index ;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -15,12 +17,20 @@ class BestSellerItem extends StatelessWidget {
             height: 135,
             child: AspectRatio(
               aspectRatio: 2.85 / 4.5,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.orange,
-                  image: const DecorationImage(
-                      image: AssetImage(Booksy.test), fit: BoxFit.cover),
-                  borderRadius: BorderRadius.circular(8),
+              child: InkWell(
+                onTap: () {
+                  context.go(AppRouter.animationView  , extra: index);
+                },
+                child: Hero(
+                  tag: '$index ',
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.orange,
+                      image: const DecorationImage(
+                          image: AssetImage(Booksy.test), fit: BoxFit.cover),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
                 ),
               ),
             ),
