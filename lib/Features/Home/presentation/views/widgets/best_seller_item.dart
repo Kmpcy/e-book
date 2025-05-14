@@ -57,7 +57,7 @@ final int index ;
                             fontWeight: FontWeight.w700, fontSize: 20)),
                   ),
                   const SizedBox(width: 45),
-                  const BookRate(),
+                    BookRate(),
                 ],
               ),
             ],

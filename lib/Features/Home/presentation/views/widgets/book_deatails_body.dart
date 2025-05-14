@@ -1,9 +1,10 @@
-import 'package:booksy/Core/App_Router.dart';
+ import 'package:booksy/Features/Home/presentation/views/widgets/book_actions.dart';
+import 'package:booksy/Features/Home/presentation/views/widgets/book_detailed_app_bar.dart';
 import 'package:booksy/Features/Home/presentation/views/widgets/book_rate.dart';
-import 'package:booksy/Features/Home/presentation/views/widgets/custom_list_view_item.dart';
+ import 'package:booksy/Features/Home/presentation/views/widgets/custom_list_view_item.dart';
 import 'package:booksy/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter/widgets.dart';
 
 class BookDeatailsBody extends StatelessWidget {
   const BookDeatailsBody({super.key});
@@ -25,38 +26,30 @@ class BookDeatailsBody extends StatelessWidget {
             "The Jungle Book",
             style: Booksy.text30,
           ),
-          Text(
-            "Rudyard Kipling",
+          Text("Rudyard Kipling",
             style: Booksy.text18.copyWith(
                 fontWeight: FontWeight.normal, fontStyle: FontStyle.italic),
+          
           ),
-          BookRate()
+          const SizedBox(height: 10),
+          BookRate(
+            mainAxisAlignment: MainAxisAlignment.center,
+          ),
+          const SizedBox(height: 30),
+          const BookActions(),
+          const SizedBox(height: 40),
+          Text("You can also like",style:Booksy.text16)
         ],
       ),
     );
   }
 }
-
-class BookDeatailsAppBar extends StatelessWidget {
-  const BookDeatailsAppBar({super.key});
+class RecomendedBooksListView extends StatelessWidget {
+  const RecomendedBooksListView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          IconButton(
-              onPressed: () {
-                context.go(AppRouter.homeView);
-              },
-              icon: const Icon(Icons.arrow_back_ios_sharp)),
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.shopping_cart_outlined, size: 30)),
-        ],
-      ),
-    );
+    return const Placeholder();
   }
 }
+
