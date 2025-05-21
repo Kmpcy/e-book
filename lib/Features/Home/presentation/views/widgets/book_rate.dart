@@ -10,7 +10,7 @@ class BookRate extends StatelessWidget {
       const Icon(
         Icons.star,
         color: Colors.amber,
-        size: 24,
+        size: 23,
       ),
       const SizedBox(width: 5),
       Text("4.5", style: Booksy.text14.copyWith(fontWeight: FontWeight.bold)),

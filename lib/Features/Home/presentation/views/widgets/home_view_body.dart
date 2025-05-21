@@ -4,8 +4,7 @@ import 'package:booksy/Features/Home/presentation/views/widgets/book_list_view.d
 import 'package:booksy/Features/Home/presentation/views/widgets/custom_app_.dart';
 import 'package:booksy/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
+ 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
 
@@ -14,16 +13,16 @@ class HomeViewBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CustomAppBar(),
-        BookListView(),
-        SizedBox(
+        const CustomAppBar(),
+        const BookListView(),
+        const SizedBox(
           height: 14,
         ),
-        Divider(
+        const Divider(
           indent: 20,
           endIndent: 20,
         ),
-        Text("    Best Seller ✨",
+        const Text("    Best Seller ✨",
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
         BestSellerListView()
       ],

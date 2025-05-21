@@ -6,11 +6,11 @@ abstract class Booksy {
   static const String logo = "assets/BOOKLY.png";
   static const String test = "assets/test_image.png";
   static const text20 = TextStyle(fontSize: 18, fontWeight: FontWeight.w700);
-  static const text14 = TextStyle(fontSize: 15, fontWeight: FontWeight.w500);
+  static const text14 = TextStyle(fontSize: 14, fontWeight: FontWeight.w500);
   static const text18 = TextStyle(fontSize: 16, fontWeight: FontWeight.bold);
   static const text16 = TextStyle(fontSize: 16);
   static var text30 = const TextStyle(
-    fontSize: 30,
+    fontSize: 31,
     fontFamily: "GTSectraFine",
     fontWeight: FontWeight.bold,
     fontStyle: FontStyle.italic,
