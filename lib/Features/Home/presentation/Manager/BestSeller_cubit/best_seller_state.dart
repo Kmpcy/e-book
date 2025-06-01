@@ -14,13 +14,13 @@ final class BestSellerCubitLoading extends BestSellerCubitState {}
 final class BestSellerCubitFailed extends BestSellerCubitState {
   final String erorrMessage;
 
-  BestSellerCubitFailed({required this.erorrMessage});
+  const BestSellerCubitFailed({required this.erorrMessage});
 }
 
 final class BestSellerCubitSuccess extends BestSellerCubitState {
   final List<BookModel> books;
 
-  BestSellerCubitSuccess({required this.books});
+  const BestSellerCubitSuccess({required this.books});
 
   
 }
