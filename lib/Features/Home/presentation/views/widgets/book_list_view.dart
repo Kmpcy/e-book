@@ -20,7 +20,7 @@ class BookListView extends StatelessWidget {
                 itemBuilder: (context, index) {
                   log(
                       'Image URL: ${state.items[index].volumeInfo!.imageLinks?.thumbnail }');
-                  return Padding(
+                  return  Padding(
                     padding: EdgeInsets.all(9.5),
                     child: CustomListViewItem(
                         imageUrl: state.items[index].volumeInfo!.imageLinks!

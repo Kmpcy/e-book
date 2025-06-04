@@ -9,24 +9,25 @@ import 'package:dio/dio.dart';
 class HomeRepoImp implements HomeRepo {
   final ApiServices apiServices;
 
-  HomeRepoImp( {required this.apiServices});
+  HomeRepoImp({required this.apiServices});
   @override
   Future<Either<Failures, List<Item>>> fetchFeatureBooks() async {
     try {
       var data = await apiServices.get();
 
-         BookModel bookModel = BookModel.fromJson(data);
+      BookModel bookModel = BookModel.fromJson(data);
       return Right(bookModel.items ?? []);
-    }  catch (e) {
-      if (e is DioException){
-
+    } catch (e) {
+      if (e is DioException) {
         return Left(ServerFailure.fromDioException(e));
-      }else {return Left(ServerFailure(e.toString()));}
+      } else {
+        return Left(ServerFailure(e.toString()));
+      }
     }
   }
-  
+
   @override
-  Future<Either<Failures, List<Item>>>fetchBestSellerBooks () {
+  Future<Either<Failures, List<Item>>> fetchBestSellerBooks() {
     // TODO: implement fetchFeatureBooks
     throw UnimplementedError();
   }
