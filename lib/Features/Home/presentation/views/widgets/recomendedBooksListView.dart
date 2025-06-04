@@ -13,7 +13,7 @@ class RecomendedBooksListView extends StatelessWidget {
           itemBuilder: (context, index) {
             return const Padding(
               padding: EdgeInsets.all(5),
-              child: CustomListViewItem(),
+              child: CustomListViewItem(imageUrl: "https://media.istockphoto.com/id/2150381137/photo/young-woman-using-mobile-phone-for-online-shopping-via-mobile-app-at-home-casual-business.jpg?s=1024x1024&w=is&k=20&c=mD3xKhNNg_8bd_Sy-036ScIBPhshK-Ow63IiW3yXCRw=",),
             );
           }),
     );

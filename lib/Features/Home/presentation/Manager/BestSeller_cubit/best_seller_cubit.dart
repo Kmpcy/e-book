@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:booksy/Features/Home/Data/models/book_model/book_model.dart';
+import 'package:booksy/Features/Home/Data/models/book_model/item.dart';
 import 'package:booksy/Features/Home/Repos/home_repo.dart';
 import 'package:equatable/equatable.dart';
 
@@ -19,8 +20,8 @@ Future<void> fetchBestSellerBooks() async {
     (failure) {
       emit(BestSellerCubitFailed(erorrMessage: failure.errorMessage));
     },
-    (books) {
-      emit(BestSellerCubitSuccess(books: books));
+    (items) {
+      emit(BestSellerCubitSuccess(items:items ));
     },
   );
 }

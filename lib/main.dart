@@ -23,7 +23,7 @@ class ebook extends StatelessWidget {
     return MultiBlocProvider( 
       providers: [
         BlocProvider(
-          create: (context) => FeaturedBooksCubit(getIt.get<HomeRepoImp>())),
+          create: (context) => FeaturedBooksCubit(getIt.get<HomeRepoImp>())..fetchFeaturedBooks()),
           BlocProvider(
           create: (context) => BestSellerCubitCubit(getIt.get<HomeRepoImp>())),
         

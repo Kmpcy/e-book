@@ -21,7 +21,7 @@ class BookDeatailsBody extends StatelessWidget {
               const BookDeatailsAppBar(),
               SizedBox(
                   width: MediaQuery.of(context).size.height * 0.20,
-                  child: const CustomListViewItem()),
+                  child: const CustomListViewItem(imageUrl: "https://media.istockphoto.com/id/2150381137/photo/young-woman-using-mobile-phone-for-online-shopping-via-mobile-app-at-home-casual-business.jpg?s=1024x1024&w=is&k=20&c=mD3xKhNNg_8bd_Sy-036ScIBPhshK-Ow63IiW3yXCRw=",)),
               const SizedBox(
                 height: 15,
               ),

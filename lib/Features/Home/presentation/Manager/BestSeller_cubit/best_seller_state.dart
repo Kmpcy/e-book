@@ -18,9 +18,9 @@ final class BestSellerCubitFailed extends BestSellerCubitState {
 }
 
 final class BestSellerCubitSuccess extends BestSellerCubitState {
-  final List<BookModel> books;
+  final List<Item> items;
 
-  const BestSellerCubitSuccess({required this.books});
+  const BestSellerCubitSuccess({required this.items});
 
   
 }
