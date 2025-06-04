@@ -11,9 +11,9 @@ class HomeRepoImp implements HomeRepo {
 
   HomeRepoImp( {required this.apiServices});
   @override
-  Future<Either<Failures, List<Item>>> fetchBestSellerBooks() async {
+  Future<Either<Failures, List<Item>>> fetchFeatureBooks() async {
     try {
-      var data = await apiServices.get(endpoint: "q=علم+نفس");
+      var data = await apiServices.get();
 
          BookModel bookModel = BookModel.fromJson(data);
       return Right(bookModel.items ?? []);
@@ -26,7 +26,7 @@ class HomeRepoImp implements HomeRepo {
   }
   
   @override
-  Future<Either<Failures, List<Item>>> fetchFeatureBooks() {
+  Future<Either<Failures, List<Item>>>fetchBestSellerBooks () {
     // TODO: implement fetchFeatureBooks
     throw UnimplementedError();
   }

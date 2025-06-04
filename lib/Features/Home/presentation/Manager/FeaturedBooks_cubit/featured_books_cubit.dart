@@ -16,7 +16,7 @@ Future <void> fetchFeaturedBooks() async {
     var result = await homeRepo.fetchFeatureBooks();
     result.fold(
       (failure) => emit(FeaturedBooksFailed(failure.errorMessage)),
-      (books) => emit(FeaturedBooksSuccess(books)),
+      (items) => emit(FeaturedBooksSuccess(items)),
     );
   }
 
