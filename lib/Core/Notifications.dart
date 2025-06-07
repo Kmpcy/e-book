@@ -1,16 +1,54 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_all.dart';
 import 'package:timezone/timezone.dart';
+import 'dart:io' show Platform;
 
-final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-    FlutterLocalNotificationsPlugin();
+class NotificationService {
+  static final NotificationService _instance = NotificationService._internal();
+  factory NotificationService() => _instance;
+  NotificationService._internal();
 
-class Notifications extends StatefulWidget {
-  const Notifications({super.key});
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
 
-  @override
-  State<Notifications> createState() => _NotificationsState();
+  Future<bool?> init() async {
+    initializeTimeZones();
+    setLocalLocation(getLocation('Africa/Cairo'));
+
+    // Request permissions for Android and iOS
+    bool? granted;
+    if (Platform.isAndroid) {
+      final androidPlugin = flutterLocalNotificationsPlugin
+          .resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin>();
+      granted = await androidPlugin?.requestNotificationsPermission();
+    } else if (Platform.isIOS) {
+      granted = await flutterLocalNotificationsPlugin
+          .resolvePlatformSpecificImplementation<
+              IOSFlutterLocalNotificationsPlugin>()
+          ?.requestPermissions(
+            alert: true,
+            badge: true,
+            sound: true,
+          );
+    }
+
+    // Initialize notifications
+    const androidSettings = AndroidInitializationSettings('bookly'); // Use custom icon
+    const iosSettings = DarwinInitializationSettings(
+      requestAlertPermission: true,
+      requestBadgePermission: true,
+      requestSoundPermission: true,
+    );
+
+    const initializationSettings = InitializationSettings(
+      android: androidSettings,
+      iOS: iosSettings,
+    );
+
+    await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+    return granted;
+  }
 
   Future<void> showInstantNotification({
     required int id,
@@ -21,53 +59,30 @@ class Notifications extends StatefulWidget {
       id,
       title,
       body,
-      const NotificationDetails(
+      NotificationDetails(
         android: AndroidNotificationDetails(
           'instant_notification_channel_id',
           'Instant Notifications',
           channelDescription: 'Instant notification channel',
           importance: Importance.max,
           priority: Priority.high,
-          icon: "@mipmap/bookly",
           playSound: true,
-          
-
+          icon: "bookly",
+          ongoing: true,
+          enableVibration: true,
+          styleInformation: BigTextStyleInformation(
+            body,
+            htmlFormatBigText: true,
+            contentTitle: title,
+            summaryText: 'Booksy Welcome',
+          ),
         ),
-        iOS: DarwinNotificationDetails(),
+        iOS: const DarwinNotificationDetails(
+          presentAlert: true,
+          presentBadge: true,
+          presentSound: true,
+        ),
       ),
     );
-  }
-}
-
-class _NotificationsState extends State<Notifications> {
-  @override
-  void initState() {
-    init();
-    super.initState();
-  }
-
-  Future<void> init() async {
-    initializeTimeZones();
-
-    //! https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-    setLocalLocation(
-      getLocation('Africa/Cairo'),
-    );
-
-    const androidSettings = AndroidInitializationSettings("@mipmap/bookly");    
-    const DarwinInitializationSettings iosSettings =
-        DarwinInitializationSettings();
-
-    const InitializationSettings initializationSettings =
-        InitializationSettings(
-      android: androidSettings,
-      iOS: iosSettings,
-    );
-
-    await flutterLocalNotificationsPlugin.initialize(initializationSettings);
-  }
-
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }

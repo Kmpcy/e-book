@@ -16,7 +16,7 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
   late Animation<double> _fadeAnimation;
   late Animation<Offset> _slideAnimation;
   late Animation<double> _scaleAnimation;
-    Notifications _notifications = Notifications(); // Instantiate Notifications
+    NotificationService _notifications = NotificationService(); // Instantiate Notifications
 
   @override
   void initState() {
@@ -55,7 +55,7 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
       await _notifications.showInstantNotification(
         id: 0,
         title: 'Welcome to Booksy!',
-        body: 'Explore your favorite books now!',
+        body: 'Explore your favorite books now! 🤓',
       );
       // Navigate to HomeView
       context.go(AppRouter.homeView);
