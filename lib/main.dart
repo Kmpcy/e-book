@@ -4,15 +4,15 @@ import 'package:booksy/Core/errors/Api/api_services.dart';
 import 'package:booksy/Features/Home/Repos/home_repo_imp.dart';
 import 'package:booksy/Features/Home/presentation/Manager/BestSeller_cubit/best_seller_cubit.dart';
 import 'package:booksy/Features/Home/presentation/Manager/FeaturedBooks_cubit/featured_books_cubit.dart';
- import 'package:booksy/constants.dart';
+import 'package:booksy/constants.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
- import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   setup();
-  runApp( const ebook());
+  runApp(const ebook());
 }
 
 class ebook extends StatelessWidget {
@@ -20,26 +20,23 @@ class ebook extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider( 
+    return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => FeaturedBooksCubit(getIt.get<HomeRepoImp>())..fetchFeaturedBooks()),
-          BlocProvider(
-          create: (context) => BestSellerCubitCubit(getIt.get<HomeRepoImp>())),
-        
+            create: (context) => FeaturedBooksCubit(getIt.get<HomeRepoImp>())
+              ..fetchFeaturedBooks()),
+        BlocProvider(
+            create: (context) => BestSellerCubit(getIt.get<HomeRepoImp>())
+              ..fetchBestSellerBooks()),
       ],
       child: MaterialApp.router(
         routerConfig: AppRouter.router,
-       debugShowCheckedModeBanner: false,
-       theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor:Booksy.kPrimaryColor,
-        textTheme:GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme
-       )), 
-       
-        ),
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData.dark().copyWith(
+            scaffoldBackgroundColor: Booksy.kPrimaryColor,
+            textTheme:
+                GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme)),
+      ),
     );
   }
-  
 }
-
-

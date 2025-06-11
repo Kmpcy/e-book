@@ -6,24 +6,23 @@ import 'package:equatable/equatable.dart';
 
 part 'best_seller_state.dart';
 
-class BestSellerCubitCubit extends Cubit<BestSellerCubitState> {
-  BestSellerCubitCubit(this.homeRepo) : super(BestSellerCubitInitial());
+class BestSellerCubit extends Cubit<BestSellerCubitState> {
+  BestSellerCubit(this.homeRepo) : super(BestSellerCubitInitial());
 
   final HomeRepo homeRepo;
 
-Future<void> fetchBestSellerBooks() async {
-  emit (BestSellerCubitLoading());
+  Future<void> fetchBestSellerBooks() async {
+    emit(BestSellerCubitLoading());
 
- var result = await homeRepo.fetchBestSellerBooks();
+    var result = await homeRepo.fetchBestSellerBooks();
 
- result.fold(
-    (failure) {
-      emit(BestSellerCubitFailed(erorrMessage: failure.errorMessage));
-    },
-    (items) {
-      emit(BestSellerCubitSuccess(items:items ));
-    },
-  );
-}
-
+    result.fold(
+      (failure) {
+        emit(BestSellerCubitFailed(erorrMessage: failure.errorMessage));
+      },
+      (items) {
+        emit(BestSellerCubitSuccess(items: items));
+      },
+    );
+  }
 }

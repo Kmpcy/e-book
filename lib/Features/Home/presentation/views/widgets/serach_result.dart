@@ -17,7 +17,9 @@ class SearchResult extends StatelessWidget {
                 onTap: () {
                   context.go(AppRouter.bookDetailsView);
                 },
-                child: BestSellerItem(index: index));
+                child: Text("data"));
+            
+                //  BestSellerItem(index: index));
           }),
     );
   }
