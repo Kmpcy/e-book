@@ -22,11 +22,11 @@ class BestSellerItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       child: SizedBox(
-        height: 140, // ارتفاع ثابت لضمان مساحة رأسية كافية
+        height: 140, 
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // الصورة
+          
             SizedBox(
               width: imageWidth,
               height: imageHeight,
@@ -58,15 +58,15 @@ class BestSellerItem extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 16),
-            // المعلومات
+           
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(top: 8),
                 child: Column(
-                  mainAxisSize: MainAxisSize.min, // لتجنب مشاكل الارتفاع
+                  mainAxisSize: MainAxisSize.min, 
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // العنوان
+                    
                     Text(
                       item.volumeInfo?.title ?? "Unknown Title",
                       overflow: TextOverflow.ellipsis,
@@ -74,7 +74,7 @@ class BestSellerItem extends StatelessWidget {
                       style: Booksy.text20,
                     ),
                     const SizedBox(height: 4),
-                    // المؤلف
+                   
                     Text(
                       item.volumeInfo?.authors?.isNotEmpty == true
                           ? item.volumeInfo!.authors!.first
@@ -84,24 +84,29 @@ class BestSellerItem extends StatelessWidget {
                       style: Booksy.text14,
                     ),
                     const SizedBox(height: 10),
-                    // السعر و BookRate
+                    
                     Row(
                       mainAxisSize: MainAxisSize
-                          .min, // تغيير من mainAxisAlignment لتقليل المساحة
+                          .min, 
                       children: [
                         Text(
-                          item.saleInfo?.retailPrice?.amount.toString() ??
-                              "Free",
+                       item.saleInfo?.retailPrice?.amount != null
+      ? '\$${item.saleInfo!.retailPrice!.amount.toString()}'
+      : 'Free',
                           overflow: TextOverflow.ellipsis,
-                          maxLines: 1, // السعر على سطر واحد
+                          maxLines: 1, 
                           style: Booksy.text20.copyWith(
                             fontWeight: FontWeight.w700,
                             fontSize: 16,
                           ),
                         ),
-                        const SizedBox(
-                            width: 16), // تقليل المسافة لتوفير المساحة
-                        Expanded(child: BookRate()), // جعل BookRate مرن
+                        const Spacer(),  
+                        Expanded(child: BookRate(
+                          
+                          
+                          count: item.volumeInfo!.pageCount ?? 100  ,
+                        rate:  item.volumeInfo!.pageCount! ~/ 5 ?? 5,
+                        )),  
                       ],
                     ),
                   ],

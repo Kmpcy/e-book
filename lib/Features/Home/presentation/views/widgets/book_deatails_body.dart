@@ -30,7 +30,11 @@ class BookDeatailsBody extends StatelessWidget {
                 "Rudyard Kipling",style: Booksy.text18.copyWith(
               fontWeight: FontWeight.normal, fontStyle: FontStyle.italic),),
               const SizedBox(height: 7),
-              BookRate(mainAxisAlignment: MainAxisAlignment.center),
+              BookRate(
+                count: 12,
+                rate: 10,
+                
+                mainAxisAlignment: MainAxisAlignment.center),
               const SizedBox(height: 15),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
