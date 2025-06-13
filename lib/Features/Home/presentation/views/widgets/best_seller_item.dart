@@ -20,13 +20,12 @@ class BestSellerItem extends StatelessWidget {
     final imageHeight = imageWidth * 1.3;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      padding: const EdgeInsets.only(left: 10, top: 6),
       child: SizedBox(
-        height: 140, 
+        height: 140,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-          
             SizedBox(
               width: imageWidth,
               height: imageHeight,
@@ -34,47 +33,36 @@ class BestSellerItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 child: AspectRatio(
                   aspectRatio: 3 / 3.9,
-                  child: InkWell(
-                    onTap: () {
-                      context.go(AppRouter.animationView, extra: index);
-                    },
-                    child: Hero(
-                      tag: '$index',
-                      child: CachedNetworkImage(
-                        imageUrl:
-                            item.volumeInfo?.imageLinks?.thumbnail ?? tempImage,
-                        fit: BoxFit.fill,
-                        placeholder: (context, url) => Center(
-                          child: CircularProgressIndicator(
-                            color: Booksy.kPrimaryColor,
-                          ),
-                        ),
-                        errorWidget: (context, url, error) =>
-                            const Icon(Icons.error),
+                  child: CachedNetworkImage(
+                    imageUrl:
+                        item.volumeInfo?.imageLinks?.thumbnail ?? tempImage,
+                    fit: BoxFit.fill,
+                    placeholder: (context, url) => Center(
+                      child: CircularProgressIndicator(
+                        color: Booksy.kPrimaryColor,
                       ),
                     ),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   ),
                 ),
               ),
             ),
             const SizedBox(width: 16),
-           
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(top: 8),
                 child: Column(
-                  mainAxisSize: MainAxisSize.min, 
+                  mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    
                     Text(
                       item.volumeInfo?.title ?? "Unknown Title",
                       overflow: TextOverflow.ellipsis,
                       maxLines: 3,
-                      style: Booksy.text20,
+                      style: Booksy.text30.copyWith(fontSize: 20),
                     ),
                     const SizedBox(height: 4),
-                   
                     Text(
                       item.volumeInfo?.authors?.isNotEmpty == true
                           ? item.volumeInfo!.authors!.first
@@ -84,29 +72,26 @@ class BestSellerItem extends StatelessWidget {
                       style: Booksy.text14,
                     ),
                     const SizedBox(height: 10),
-                    
                     Row(
-                      mainAxisSize: MainAxisSize
-                          .min, 
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                       item.saleInfo?.retailPrice?.amount != null
-      ? '\$${item.saleInfo!.retailPrice!.amount.toString()}'
-      : 'Free',
+                          item.saleInfo?.retailPrice?.amount != null
+                              ? '\$${item.saleInfo!.retailPrice!.amount.toString()}'
+                              : 'Free',
                           overflow: TextOverflow.ellipsis,
-                          maxLines: 1, 
+                          maxLines: 1,
                           style: Booksy.text20.copyWith(
                             fontWeight: FontWeight.w700,
-                            fontSize: 16,
+                            fontSize: 20,
                           ),
                         ),
-                        const Spacer(),  
-                        Expanded(child: BookRate(
-                          
-                          
-                          count: item.volumeInfo!.pageCount ?? 100  ,
-                        rate:  item.volumeInfo!.pageCount! ~/ 5 ?? 5,
-                        )),  
+                        const Spacer(flex: 1),
+                        Expanded(
+                            child: BookRate(
+                          count: item.volumeInfo!.pageCount ?? 100,
+                          rate: item.volumeInfo!.pageCount! ~/ 5 ?? 5,
+                        )),
                       ],
                     ),
                   ],

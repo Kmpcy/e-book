@@ -23,7 +23,7 @@ class BookRate extends StatelessWidget {
         Text(rate.toString(),
             style: Booksy.text14.copyWith(fontWeight: FontWeight.bold)),
         const SizedBox(width: 5),
-        Opacity(opacity: .6, child: Text("($count)", style: Booksy.text14)),
+        Opacity(opacity: .6, child: Text("($count)" , style: Booksy.text14)),
       ]),
     );
   }

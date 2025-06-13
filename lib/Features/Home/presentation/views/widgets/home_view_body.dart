@@ -25,8 +25,11 @@ class HomeViewBody extends StatelessWidget {
           indent: 20,
           endIndent: 20,
         ),
-        const Text("    Best Seller ✨",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+        const SizedBox(
+          height: 40,
+          child: Text("    Best Seller ✨",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+        ),
         BestSellerListView()
       ],
     );

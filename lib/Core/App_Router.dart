@@ -10,7 +10,7 @@ abstract class AppRouter {
   static const String splashView = '/';
   static const String homeView = '/home';
   static const String bookDetailsView = '/bookDetails';
-  static const String animationView = '/animationView';
+  static const String animationView = '/animation/:index';
   static const String searchView = '/searchView';
 
   static final GoRouter router = GoRouter(routes: <RouteBase>[
@@ -29,11 +29,13 @@ abstract class AppRouter {
         builder: (BuildContext context, GoRouterState state) {
           return const BookDetailsView();
         }),
-    GoRoute(
-        path: animationView,
-        builder: (BuildContext context, GoRouterState state) {
-          return AnimationView(index: state.extra as int);
-        }),
+    // GoRoute(
+    //     path: animationView,
+    //     builder: (BuildContext context, GoRouterState state) {
+    //    final index = int.parse(state.pathParameters['index']!);
+    //       final image = state.extra as String; // extra هو الـ imageUrl مباشرة
+    //       return AnimationView(index: index, image: image);
+    //     }),
     GoRoute(
         path: searchView,
         builder: (BuildContext context, GoRouterState state) {
