@@ -29,7 +29,7 @@ class HomeRepoImp implements HomeRepo {
   @override
   Future<Either<Failures, List<Item>>> fetchBestSellerBooks() async {
     try {
-      var data = await apiServices.get(endpoint: "volumes?q=Psychology");
+      var data = await apiServices.get(endpoint: "volumes?q=novels");
 
       BookModel bookModel = BookModel.fromJson(data);
       return Right(bookModel.items ?? []);
