@@ -20,7 +20,7 @@ class BestSellerListView extends StatelessWidget {
       itemBuilder: (context, index) {
         return GestureDetector(
             onTap: () {
-              context.go(AppRouter.bookDetailsView);
+              context.go(AppRouter.bookDetailsView , extra: state.items[index]);
             },
             child: BestSellerItem(index: index , item: state.items[index],));
       });

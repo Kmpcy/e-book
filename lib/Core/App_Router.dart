@@ -1,4 +1,5 @@
 import 'package:booksy/Core/Service_locator.dart';
+import 'package:booksy/Features/Home/Data/models/book_model/item.dart';
 import 'package:booksy/Features/Home/Repos/home_repo_imp.dart';
 import 'package:booksy/Features/Home/presentation/Manager/SimilarBooks_cubit/similar_books_cubit.dart';
 import 'package:booksy/Features/Home/presentation/views/book_details_view.dart';
@@ -33,7 +34,9 @@ abstract class AppRouter {
         builder: (BuildContext context, GoRouterState state) {
           return BlocProvider(
             create: (context) => SimilarBooksCubit(getIt.get<HomeRepoImp>()),
-            child: const BookDetailsView(),
+            child:   BookDetailsView(
+          item: state.extra as Item
+            ),
           );
         }),
     // GoRoute(
