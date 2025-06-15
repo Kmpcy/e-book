@@ -5,8 +5,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
  
 class BestSellerItem extends StatelessWidget {
-  const BestSellerItem({super.key, required this.index, required this.item});
-  final int index;
+  const BestSellerItem({super.key,   required this.item});
+   
   final Item item;
 
   final String tempImage =
@@ -57,7 +57,7 @@ class BestSellerItem extends StatelessWidget {
                     Text(
                       item.volumeInfo?.title ?? "Unknown Title",
                       overflow: TextOverflow.ellipsis,
-                      maxLines: 3,
+                      maxLines: 2,
                       style: Booksy.text30.copyWith(fontSize: 20),
                     ),
                     const SizedBox(height: 4),
@@ -66,7 +66,7 @@ class BestSellerItem extends StatelessWidget {
                           ? item.volumeInfo!.authors!.first
                           : "Unknown Author",
                       overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
+                      maxLines: 1,
                       style: Booksy.text14,
                     ),
                     const SizedBox(height: 10),

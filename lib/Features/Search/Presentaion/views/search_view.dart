@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class SearchView extends StatelessWidget {
-  const SearchView({super.key});
-
+   SearchView({super.key});
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +22,7 @@ class SearchView extends StatelessWidget {
         title: const Text("Find Your Book"),
         automaticallyImplyLeading: true,
       ),
-      body: const SafeArea(child: SerachViewBody()),
+      body:   SafeArea(child: SerachViewBody()),
     );
   }
 }

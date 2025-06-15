@@ -5,7 +5,9 @@ import 'package:booksy/Features/Home/presentation/Manager/SimilarBooks_cubit/sim
 import 'package:booksy/Features/Home/presentation/views/book_details_view.dart';
 import 'package:booksy/Features/Home/presentation/views/home_view.dart';
 import 'package:booksy/Features/Home/presentation/views/widgets/animation_view.dart';
+import 'package:booksy/Features/Search/Presentaion/Manager/cubit/search_cubit.dart';
 import 'package:booksy/Features/Search/Presentaion/views/search_view.dart';
+import 'package:booksy/Features/Search/Repos/search_repo_imp.dart';
 import 'package:booksy/Features/Splash/Presentation/Views/Widgets/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,9 +36,7 @@ abstract class AppRouter {
         builder: (BuildContext context, GoRouterState state) {
           return BlocProvider(
             create: (context) => SimilarBooksCubit(getIt.get<HomeRepoImp>()),
-            child:   BookDetailsView(
-          item: state.extra as Item
-            ),
+            child: BookDetailsView(item: state.extra as Item),
           );
         }),
     // GoRoute(
@@ -49,7 +49,12 @@ abstract class AppRouter {
     GoRoute(
         path: searchView,
         builder: (BuildContext context, GoRouterState state) {
-          return const SearchView();
+          return BlocProvider(
+            create: (context) => SearchCubit(
+              getIt.get<SearchRepoImp>(),
+            ),
+            child: SearchView(),
+          );
         }),
   ]);
 }

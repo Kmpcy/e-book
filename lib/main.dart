@@ -1,4 +1,5 @@
 import 'package:booksy/Core/App_Router.dart';
+import 'package:booksy/Core/Notifications.dart';
 import 'package:booksy/Core/Service_locator.dart';
 import 'package:booksy/Core/errors/Api/api_services.dart';
 import 'package:booksy/Features/Home/Repos/home_repo_imp.dart';
@@ -10,8 +11,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() {
+Future<void> main() async {
   setup();
+  WidgetsFlutterBinding.ensureInitialized();
+  await NotificationService().init();
   runApp(const ebook());
 }
 

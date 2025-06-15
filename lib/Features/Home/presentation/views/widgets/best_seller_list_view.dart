@@ -22,7 +22,7 @@ class BestSellerListView extends StatelessWidget {
             onTap: () {
               context.go(AppRouter.bookDetailsView , extra: state.items[index]);
             },
-            child: BestSellerItem(index: index , item: state.items[index],));
+            child: BestSellerItem( item: state.items[index],));
       });
 }else if (state is BestSellerCubitLoading) {
             return const Center(child: CircularProgressIndicator());

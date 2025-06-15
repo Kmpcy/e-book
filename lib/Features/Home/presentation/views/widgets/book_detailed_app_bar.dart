@@ -14,7 +14,7 @@ class BookDeatailsAppBar extends StatelessWidget {
         children: [
           IconButton(
               onPressed: () {
-                context.go(AppRouter.homeView);
+                context.pop();
               },
               icon: const Icon(Icons.arrow_back_ios_sharp)),
           IconButton(

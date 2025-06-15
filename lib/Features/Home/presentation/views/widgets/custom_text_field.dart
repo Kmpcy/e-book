@@ -2,13 +2,16 @@
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({
-    super.key,
+    CustomTextField({
+    super.key, required this.onSumitted,required this.controller,
   });
-
+ final void Function(String) onSumitted ;
+   TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onSubmitted:onSumitted, 
+      controller: controller,
         decoration: InputDecoration(
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12.0),

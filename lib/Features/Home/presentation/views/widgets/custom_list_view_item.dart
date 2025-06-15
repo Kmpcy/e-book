@@ -9,15 +9,18 @@ class CustomListViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: 1.25 / 2,
-      child: CachedNetworkImage(
-        imageUrl: imageUrl,
-        fit: BoxFit.cover,
-        placeholder: (context, url) =>   Center(
-          child: CircularProgressIndicator(
-            color: Booksy.kPrimaryColor,
+      child: Container(
+        color: Colors.transparent, 
+        child: CachedNetworkImage(
+          imageUrl: imageUrl,
+          fit: BoxFit.cover,
+          placeholder: (context, url) =>   Center(
+            child: CircularProgressIndicator(
+              color: Booksy.kPrimaryColor,
+            ),
           ),
+          errorWidget: (context, url, error) => const Icon(Icons.error),
         ),
-        errorWidget: (context, url, error) => const Icon(Icons.error),
       ),
     );
   }

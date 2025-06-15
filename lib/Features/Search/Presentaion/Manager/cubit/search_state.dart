@@ -9,5 +9,16 @@ sealed class SearchState extends Equatable {
 
 final class SearchInitial extends SearchState {}
 final class SearchLoading extends SearchState {}
-final class SearchFailed extends SearchState {}
-final class SearchSuccess extends SearchState {}
+final class SearchFailed extends SearchState {
+  final String errorMessage;
+
+  const SearchFailed(this.errorMessage);
+
+
+}
+final class SearchSuccess extends SearchState {
+  final List<Item> items;
+
+  const SearchSuccess(this.items);
+
+}

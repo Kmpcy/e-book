@@ -1,7 +1,9 @@
+import 'package:booksy/Core/App_Router.dart';
 import 'package:booksy/Features/Home/presentation/Manager/SimilarBooks_cubit/similar_books_cubit.dart';
 import 'package:booksy/Features/Home/presentation/views/widgets/custom_list_view_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class SimilarBooksListView extends StatelessWidget {
   const SimilarBooksListView({super.key});
@@ -26,9 +28,16 @@ class SimilarBooksListView extends StatelessWidget {
                   final book = state.items[index];
                   return Padding(
                     padding: const EdgeInsets.all(5),
-                    child: CustomListViewItem(
-                      imageUrl:
-                          book.volumeInfo?.imageLinks?.thumbnail ?? tempImage,
+                    child: InkWell(
+                      onTap: () {
+                        print("Tapped: ${book.volumeInfo?.title}");
+                        context.go(AppRouter.bookDetailsView,
+                            extra: state.items[index]);
+                      },
+                      child: CustomListViewItem(
+                        imageUrl:
+                            book.volumeInfo?.imageLinks?.thumbnail ?? tempImage,
+                      ),
                     ),
                   );
                 }),

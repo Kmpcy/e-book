@@ -11,7 +11,7 @@ class SearchRepoImp implements SearchRepo{
 
   SearchRepoImp({required this.apiServices});
   @override
-  Future<Either<Failures, List<Item>>> searchBooks({required String query}) async {
+  Future<Either<Failures, List<Item>>> fetshSearchBooks({required String query}) async {
     try {
       var data = await apiServices.get(endpoint: "volumes?q=$query");
 
