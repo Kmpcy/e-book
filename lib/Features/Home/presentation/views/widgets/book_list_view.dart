@@ -1,9 +1,11 @@
 import 'dart:developer';
 
+import 'package:booksy/Core/App_Router.dart';
 import 'package:booksy/Features/Home/presentation/Manager/FeaturedBooks_cubit/featured_books_cubit.dart';
 import 'package:booksy/Features/Home/presentation/views/widgets/custom_list_view_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class BookListView extends StatelessWidget {
   const BookListView({super.key});
@@ -21,11 +23,14 @@ class BookListView extends StatelessWidget {
                   log(
                       'Image URL: ${state.items[index].volumeInfo!.imageLinks?.thumbnail }');
                   return  Padding(
-                    padding: EdgeInsets.all(9.5),
-                    child: CustomListViewItem(
-                        imageUrl: state.items[index].volumeInfo!.imageLinks!
-                                .thumbnail ??
-                            'https://media.istockphoto.com/id/2150381137/photo/young-woman-using-mobile-phone-for-online-shopping-via-mobile-app-at-home-casual-business.jpg?s=1024x1024&w=is&k=20&c=mD3xKhNNg_8bd_Sy-036ScIBPhshK-Ow63IiW3yXCRw='),
+                    padding:const  EdgeInsets.all(9.5),
+                    child: GestureDetector(
+                      onTap: (){  context.go(AppRouter.bookDetailsView , extra: state.items[index]);},
+                      child: CustomListViewItem(
+                          imageUrl: state.items[index].volumeInfo!.imageLinks!
+                                  .thumbnail ??
+                              'https://media.istockphoto.com/id/2150381137/photo/young-woman-using-mobile-phone-for-online-shopping-via-mobile-app-at-home-casual-business.jpg?s=1024x1024&w=is&k=20&c=mD3xKhNNg_8bd_Sy-036ScIBPhshK-Ow63IiW3yXCRw='),
+                    ),
                   );
                 }),
           );

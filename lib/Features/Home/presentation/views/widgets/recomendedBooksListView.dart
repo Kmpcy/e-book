@@ -19,6 +19,7 @@ class SimilarBooksListView extends StatelessWidget {
           return SizedBox(
             height: MediaQuery.of(context).size.height * .18,
             child: ListView.builder(
+                shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 itemCount: state.items.length,
                 itemBuilder: (context, index) {
@@ -32,12 +33,11 @@ class SimilarBooksListView extends StatelessWidget {
                   );
                 }),
           );
-        }  else  {
+        } else {
           return const Center(
             child: CircularProgressIndicator(),
           );
-        
-      }
+        }
       },
     );
   }
