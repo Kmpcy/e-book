@@ -25,7 +25,7 @@ class BookActions extends StatelessWidget {
           Expanded(
               child: CustomButton(
             onPressed: () async {
-              final Uri url = Uri.parse(item.accessInfo?.webReaderLink ??
+              final Uri url = Uri.parse(
                   item.volumeInfo?.previewLink ??
                   "https://play.google.com/books/reader?id=lQB2DwAAQBAJ&pg=GBS.PP1&hl=&source=gbs_api");
               if (await canLaunchUrl(url)) {
