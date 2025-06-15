@@ -1,11 +1,9 @@
-import 'package:booksy/Core/App_Router.dart';
-import 'package:booksy/Features/Home/Data/models/book_model/item.dart';
+ import 'package:booksy/Features/Home/Data/models/book_model/item.dart';
 import 'package:booksy/Features/Home/presentation/views/widgets/book_rate.dart';
 import 'package:booksy/constants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-
+ 
 class BestSellerItem extends StatelessWidget {
   const BestSellerItem({super.key, required this.index, required this.item});
   final int index;
